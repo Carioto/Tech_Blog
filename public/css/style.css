@@ -1,5 +1,18 @@
-title{
-    margin-top: 2%;
-    margin-left: 2%;
+.bodycss{
+    background-color: rgb(207, 141, 141);
+    max-width: 60%;
+    margin: 20px;
+}
+#navcss{
+    background-color: rgb(183, 126, 236);
+    font-style: italic;
     
+}
+.card {
+    margin: 5px;
+    border: 5px solid rgb(239, 71, 71);
+    background-color: olive;
+    text-align: center;
+    font-size: 22px;
+
 }
