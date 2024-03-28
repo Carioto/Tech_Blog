@@ -1,5 +1,7 @@
 <section class="card">
-    <header>{{blogTitle}}</header>
+    <h2>{{blogTitle}}</h2>
     <p>{{blogBody}}</p>
-    <p>Blogged by {{user.username}} on {{createdAt}}.</p>
+    <p>Blogged by {{user.username}} on {{format_date createdAt}} at {{format_time createdAt}}.</p>
+    <a href="dash/edit/{{id}}" class="editLink">Edit or delete blog</a>
+
 </section>

@@ -8,10 +8,12 @@ router.post('/users', async (req,res) => {
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
-     })
-     req.session.save(() => {
+     }).then(userData => {
+      req.session.save(() => {
         req.session.loggedIn = true;
+        req.session.user_id = userData.id;
         res.status(200).json(userData);
+      })
       });
    } catch (err) {
     console.log(err);
@@ -36,15 +38,17 @@ router.post('/users/login', async (req,res) => {
       const rightPass = await userData.checkPassword(req.body.password);
 
       if (!rightPass) {
+        console.log(`email or password wrong ${userData}`)
         res.status(400).json({message:"email or password incorrect. Try again."});
         return;
-      }
-      
+      }else{      
       req.session.save(() => {
         req.session.loggedIn = true;
-        res.status(200).json({message:"You are logged in as "});
+        req.session.user_id = userData.id;
+        res.status(200).json(userData);
       });
-    } catch (err) {
+      console.log('logged in')
+    }} catch (err) {
         console.log(err);
         res.status(500).json(err);
     }

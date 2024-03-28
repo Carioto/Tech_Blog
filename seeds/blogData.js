@@ -14,7 +14,7 @@ const blogData = [
 {
     blogTitle: 'MySQL Devotees',
     blogBody: 'Here is a place to show your love for the MySQL database management system.',
-    user_id: '3',
+    user_id: '4',
 },
 ]
 

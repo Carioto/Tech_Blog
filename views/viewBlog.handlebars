@@ -1,0 +1,25 @@
+{{#if loggedIn}}
+  <div>
+    <section class="card">
+      <input type="text" id="blogid" name="blogid" value="{{mapBlog.id}}" hidden></p>
+      <h2>Title: {{mapBlog.blogTitle}}</h2>
+      <p>Content: {{mapBlog.blogBody}}</p>
+      <p>Blogged by
+        {{mapBlog.user.username}}
+        on
+        {{format_date mapBlog.createdAt}}
+        at
+        {{format_time mapBlog.createdAt}}.</p>
+    </section>
+
+    <section class="card">
+      <label for="comment">Leave a comment</label>
+      <textarea id="comment" name="comment" rows="5" cols="90">
+      </textarea>
+      <button id="submit">Submit</button>
+    </section>
+  </div>
+  <script src="/js/comment.js"></script>
+{{else}}
+  <p>please log in first</p>
+{{/if}}

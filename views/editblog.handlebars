@@ -1,0 +1,31 @@
+{{#if loggedIn}}
+  <div>
+    <h2>Edit or Delete</h2>
+    <div>
+      <input
+        type="text"
+        id="blogid"
+        name="blogid"
+        value="{{mapBlog.id}}"
+        disabled
+      /><br /><br />
+      <label for="editbpt">Title</label>
+      <input type="text" id="editbpt" value="{{mapBlog.blogTitle}}" />
+    </div>
+    <div>
+      <label for="editbp">Content</label>
+      <textarea
+        id="editbp"
+        name="editbp"
+        rows="15"
+        cols="90"
+      >{{mapBlog.blogBody}}
+      </textarea>
+      <button id="submit">Submit</button>
+      <button id="delete">Delete</button>
+    </div>
+  </div>
+  <script src="/js/editBlog.js"></script>
+{{else}}
+  <p>please log in first</p>
+{{/if}}
