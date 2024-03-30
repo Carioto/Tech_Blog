@@ -13,11 +13,22 @@
     </section>
 
     <section class="card">
-      <label for="comment">Leave a comment</label>
+      <h2>Leave a comment:</h2>
       <textarea id="comment" name="comment" rows="5" cols="90">
       </textarea>
+      <br>
       <button id="submit">Submit</button>
     </section>
+
+    <section>
+  <h3>Comments</h3>
+  {{#each comments as |comment|}}
+    <div class="comment">
+      <p>ttttttttttttttttttttttttttttttttttttt{{comBody}}</p>
+      <p>by {{comment.user}} on {{format_date createdAt}}</p>
+    </div>
+  {{/each}}
+</section>
   </div>
   <script src="/js/comment.js"></script>
 {{else}}

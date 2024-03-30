@@ -36,10 +36,23 @@ router.get("/blog/:id", checkLogin, async (req, res) => {
           attributes: ["username"],
         },
       ],
+      include: [
+        {
+          model: Comment,
+          attributes: ["comBody", "user_id", "blog_id", "createdAt"],
+          include: {
+            model: User,
+            attributes: ["username"],
+          },
+        },
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
     });
-
     const mapBlog = oneBlog.get({ plain: true });
-
+console.log(mapBlog);
     res.render("viewBlog", {
       loggedIn: req.session.loggedIn,
       mapBlog,

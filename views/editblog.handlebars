@@ -1,5 +1,5 @@
 {{#if loggedIn}}
-  <div>
+  <div id="blogcard">
     <h2>Edit or Delete</h2>
     <div>
       <input
@@ -8,19 +8,15 @@
         name="blogid"
         value="{{mapBlog.id}}"
         hidden
-      /><br /><br />
-      <label for="editbpt">Title</label>
+      />
+      <h3>Title:</h3>
       <input type="text" id="editbpt" value="{{mapBlog.blogTitle}}" />
     </div>
     <div>
-      <label for="editbp">Content</label>
-      <textarea
-        id="editbp"
-        name="editbp"
-        rows="15"
-        cols="90"
-      >{{mapBlog.blogBody}}
+      <h3>Content</h3>
+      <textarea id="editbp" name="editbp">{{mapBlog.blogBody}}
       </textarea>
+      <br />
       <button id="submit">Submit</button>
       <button id="delete">Delete</button>
     </div>

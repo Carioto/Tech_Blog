@@ -25,3 +25,24 @@
 #logout {
   cursor: pointer;
 }
+#blogcard {
+  text-align: center;
+}
+textarea {
+  width: 500px;
+  min-height: 100px;
+  padding: 8px;
+  font-size: 18px;
+  resize: none;
+  border: solid 1px;
+  border-radius: 4px;
+  outline: none;
+}
+@media screen and (max-width: 888px) {
+  .bodycss {
+    max-width: 95%;
+  }
+  textarea {
+    width: 250px;
+  }
+}
