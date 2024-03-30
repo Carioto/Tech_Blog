@@ -9,7 +9,7 @@ const addComment = async (event) => {
     method: "POST",
     body: JSON.stringify({
       comBody,
-      blog_id
+      blog_id,
     }),
     headers: { "content-Type": "application/json" },
   });

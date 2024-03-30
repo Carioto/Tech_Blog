@@ -1,18 +1,17 @@
 {{#if loggedIn}}
-<div>
+  <div>
     <div>
-     <label for="newbpt">Give your post a title:</label>
-     <input type="text" id="newbpt">
+      <label for="newbpt">Give your post a title:</label>
+      <input type="text" id="newbpt" />
     </div>
     <div>
-     <label for="newbp">Begin your blog here:</label>
-     <textarea id="newbp" name="newbp" rows="15" cols="90">
-     </textarea>   
-      <button id="submit">Submit</button>  
+      <label for="newbp">Begin your blog here:</label>
+      <textarea id="newbp" name="newbp" rows="15" cols="90">
+      </textarea>
+      <button id="submit">Submit</button>
     </div>
-</div>
-<script src="/js/newblog.js"></script>
+  </div>
+  <script src="/js/newblog.js"></script>
 {{else}}
- <p>please log in first</p>
+  <p>please log in first</p>
 {{/if}}
- 

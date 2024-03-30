@@ -1,29 +1,27 @@
-.bodycss{
-    background-color: rgb(207, 141, 141);
-    max-width: 60%;
-    margin: 20px;
+.bodycss {
+  background-color: rgb(207, 141, 141);
+  max-width: 60%;
+  margin: 20px;
 }
-#navcss{
-    background-color: rgb(183, 126, 236);
-    font-style: italic;
-    
+#navcss {
+  background-color: rgb(183, 126, 236);
+  font-style: italic;
 }
 .card {
-    margin: 5px;
-    border: 5px solid rgb(239, 71, 71);
-    background-color: olive;
-    text-align: center;
-    font-size: 22px;
-    padding-bottom: 5px;
-    
+  margin: 5px;
+  border: 5px solid rgb(239, 71, 71);
+  background-color: olive;
+  text-align: center;
+  font-size: 22px;
+  padding-bottom: 5px;
 }
 .comment {
-    margin: 5px;
-    border: 1px solid grey;
-    background-color: rgb(197, 223, 246);
-    font-size: 15px;  
-    padding-left: 3px; 
+  margin: 5px;
+  border: 1px solid grey;
+  background-color: rgb(197, 223, 246);
+  font-size: 15px;
+  padding-left: 3px;
 }
 #logout {
-    cursor: pointer;
+  cursor: pointer;
 }

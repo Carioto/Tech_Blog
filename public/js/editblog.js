@@ -9,7 +9,9 @@ const sendEdit = async (event) => {
   const response = await fetch("/dash/edit", {
     method: "PUT",
     body: JSON.stringify({
-      title,body,id
+      title,
+      body,
+      id,
     }),
     headers: { "Content-Type": "application/json" },
   });

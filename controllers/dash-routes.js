@@ -11,25 +11,24 @@ router.get("/", checkLogin, async (req, res) => {
       include: [
         {
           model: Comment,
-          attributes: ["comBody", "user_id", "blog_id","createdAt"],
-          include: 
-            {
-              model: User,
-              attributes: ["username"]
-            }
+          attributes: ["comBody", "user_id", "blog_id", "createdAt"],
+          include: {
+            model: User,
+            attributes: ["username"],
+          },
         },
         {
           model: User,
           attributes: ["username"],
         },
-      ]
-    })
+      ],
+    });
     const blogbatch = userBlogs.map((blog) => blog.get({ plain: true }));
     console.log(blogbatch);
     res.render("Dashboard", {
       blogbatch,
       loggedIn: req.session.loggedIn,
-      user:req.session.user_id
+      user: req.session.user_id,
     });
   } catch (err) {
     console.log(err);
@@ -104,7 +103,5 @@ router.delete("/edit/:id", checkLogin, async (req, res) => {
     res.status(500).json({ message: "Cannot delete blog post" });
   }
 });
-
-
 
 module.exports = router;

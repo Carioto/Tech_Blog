@@ -32,7 +32,7 @@ router.get("/blog/:id", checkLogin, async (req, res) => {
       attributes: ["id", "blogTitle", "blogBody", "createdAt"],
       include: [
         {
-          model:User,
+          model: User,
           attributes: ["username"],
         },
       ],
