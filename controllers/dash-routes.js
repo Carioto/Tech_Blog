@@ -11,24 +11,25 @@ router.get("/", checkLogin, async (req, res) => {
       include: [
         {
           model: Comment,
-          attributes: ["comBody", "user_id", "createdAt"],
-          include: [
+          attributes: ["comBody", "user_id", "blog_id","createdAt"],
+          include: 
             {
               model: User,
-              attributes: ["username"],
-            },
-          ],
+              attributes: ["username"]
+            }
         },
         {
           model: User,
           attributes: ["username"],
         },
-      ],
-    });
+      ]
+    })
     const blogbatch = userBlogs.map((blog) => blog.get({ plain: true }));
+    console.log(blogbatch);
     res.render("Dashboard", {
       blogbatch,
       loggedIn: req.session.loggedIn,
+      user:req.session.user_id
     });
   } catch (err) {
     console.log(err);
