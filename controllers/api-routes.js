@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { User } = require("../models");
 
-//new user
+// create new user
 router.post("/users", async (req, res) => {
   try {
     const userData = await User.create({
@@ -29,7 +29,6 @@ router.post("/users/login", async (req, res) => {
         email: req.body.email,
       },
     });
-
     if (!userData) {
       res
         .status(400)
@@ -67,4 +66,5 @@ router.post("/users/logout", (req, res) => {
     });
   }
 });
+
 module.exports = router;

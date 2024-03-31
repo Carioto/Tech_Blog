@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Blog, User, Comment } = require("../models");
 const checkLogin = require("../utils/login");
 
+// get all blogs at homepage
 router.get("/", async (req, res) => {
   try {
     const dbBlogData = await Blog.findAll({
@@ -22,7 +23,8 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
-//view a single blog
+
+//view a single blog, view comments, leave comment
 router.get("/blog/:id", checkLogin, async (req, res) => {
   try {
     const oneBlog = await Blog.findOne({
@@ -52,7 +54,6 @@ router.get("/blog/:id", checkLogin, async (req, res) => {
       ],
     });
     const mapBlog = oneBlog.get({ plain: true });
-console.log(mapBlog);
     res.render("viewBlog", {
       loggedIn: req.session.loggedIn,
       mapBlog,
@@ -62,6 +63,7 @@ console.log(mapBlog);
   }
 });
 
+// post comment to database
 router.post("/comm", checkLogin, async (req, res) => {
   const blogID = parseInt(req.body.blog_id);
   try {
@@ -77,6 +79,7 @@ router.post("/comm", checkLogin, async (req, res) => {
   }
 });
 
+// navigating to log in screen when logged in returns to homepage
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");

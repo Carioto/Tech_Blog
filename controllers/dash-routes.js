@@ -3,6 +3,7 @@ const { Blog, User, Comment } = require("../models");
 
 const checkLogin = require("../utils/login");
 
+// view all blogs of logged in user.  Allow edit, delete.  View comments
 router.get("/", checkLogin, async (req, res) => {
   try {
     const userBlogs = await Blog.findAll({
@@ -36,10 +37,12 @@ router.get("/", checkLogin, async (req, res) => {
   }
 });
 
+// Render create-new-blog- page
 router.get("/newblog", checkLogin, async (req, res) => {
   res.render("newBlog", { loggedIn: req.session.loggedIn });
 });
 
+// Post new blog to database
 router.post("/newblog", checkLogin, async (req, res) => {
   try {
     const newBlogPost = await Blog.create({
@@ -54,6 +57,7 @@ router.post("/newblog", checkLogin, async (req, res) => {
   }
 });
 
+// render 1 blog to edit or delete
 router.get("/edit/:id", checkLogin, async (req, res) => {
   try {
     const getBlog = await Blog.findOne({
@@ -72,6 +76,7 @@ router.get("/edit/:id", checkLogin, async (req, res) => {
   }
 });
 
+// edit a blog
 router.put("/edit", checkLogin, async (req, res) => {
   try {
     const updateBlog = await Blog.update(
@@ -91,6 +96,7 @@ router.put("/edit", checkLogin, async (req, res) => {
   }
 });
 
+// delete a blog
 router.delete("/edit/:id", checkLogin, async (req, res) => {
   try {
     const delBlog = await Blog.destroy({
