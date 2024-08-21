@@ -1,20 +1,20 @@
-const router = require("express").Router();
-const { Blog, User, Comment } = require("../models");
-const checkLogin = require("../utils/login");
+const router = require('express').Router();
+const { Blog, User, Comment } = require('../models');
+const checkLogin = require('../utils/login');
 
 // get all blogs at homepage
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const dbBlogData = await Blog.findAll({
       include: [
         {
           model: User,
-          attributes: ["username"],
+          attributes: ['username'],
         },
       ],
     });
     const blogbatch = dbBlogData.map((blog) => blog.get({ plain: true }));
-    res.render("home", {
+    res.render('home', {
       blogbatch,
       loggedIn: req.session.loggedIn,
     });
@@ -24,37 +24,37 @@ router.get("/", async (req, res) => {
   }
 });
 
-//view a single blog, view comments, leave comment
-router.get("/blog/:id", checkLogin, async (req, res) => {
+// view a single blog, view comments, leave comment
+router.get('/blog/:id', checkLogin, async (req, res) => {
   try {
     const oneBlog = await Blog.findOne({
       where: {
         id: req.params.id,
       },
-      attributes: ["id", "blogTitle", "blogBody", "createdAt"],
+      attributes: ['id', 'blogTitle', 'blogBody', 'createdAt'],
       include: [
         {
           model: User,
-          attributes: ["username"],
+          attributes: ['username'],
         },
       ],
       include: [
         {
           model: Comment,
-          attributes: ["comBody", "user_id", "blog_id", "createdAt"],
+          attributes: ['comBody', 'user_id', 'blog_id', 'createdAt'],
           include: {
             model: User,
-            attributes: ["username"],
+            attributes: ['username'],
           },
         },
         {
           model: User,
-          attributes: ["username"],
+          attributes: ['username'],
         },
       ],
     });
     const mapBlog = oneBlog.get({ plain: true });
-    res.render("viewBlog", {
+    res.render('viewBlog', {
       loggedIn: req.session.loggedIn,
       mapBlog,
     });
@@ -64,7 +64,7 @@ router.get("/blog/:id", checkLogin, async (req, res) => {
 });
 
 // post comment to database
-router.post("/comm", checkLogin, async (req, res) => {
+router.post('/comm', checkLogin, async (req, res) => {
   const blogID = parseInt(req.body.blog_id);
   try {
     const postComm = await Comment.create({
@@ -80,11 +80,11 @@ router.post("/comm", checkLogin, async (req, res) => {
 });
 
 // navigating to log in screen when logged in returns to homepage
-router.get("/login", (req, res) => {
+router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect("/");
+    res.redirect('/');
     return;
   }
-  res.render("login");
+  res.render('login');
 });
 module.exports = router;
